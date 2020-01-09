@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Gerenciador de Finanças">
+    <meta name="author" content="João Paulo Santana">
+
+    <title>Controle de Despesas</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+
+    <!-- App JS-->
+    <script src="js/app.js"></script>
+
+</head>
+
+<body class="animsition" onload="carregaListaDespesas2()">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <h3>Controle de Despesas</h3>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="cadastrar.html">
+                                <i class="fas fa-edit"></i>Cadastrar Despesa</a>
+                        </li>
+                        <li>
+                            <a href="consultar.html">
+                                <i class="fas fa-search"></i>Consultar Despesas</a>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <h3>Controle de Despesas</h3>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active">
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="cadastrar.html">
+                                <i class="fas fa-edit"></i>Cadastrar Despesa</a>
+                        </li>
+                        <li>
+                            <a href="consultar.html">
+                                <i class="fas fa-search"></i>Consultar Despesas</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap" id="header-wrap">
+                            <div class="header-button">
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#">Sistema de Despesas</a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#">Sistema de Despesas</a>
+                                                    </h5>
+                                                    <span class="email">despesas@example.com</span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="cadastrar.html">
+                                                        <i class="zmdi zmdi-assignment-o"></i>Cadastrar Despesas</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="consultar.html">
+                                                        <i class="zmdi zmdi-search-in-page"></i>Consultar Despesas</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer" onclick="windowClose()">
+                                                <a href="#" onclick="resetarSistema()">
+                                                    <i class="zmdi zmdi-refresh-sync"></i>Resetar o sistema</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="overview-wrap">
+                                <h2 class="title-1">Instruções de Uso</h2>
+                                <button id="btn-add" class="au-btn au-btn-icon au-btn--blue">
+                                    <i class="zmdi zmdi-plus"></i> <a href="cadastrar.html">Adicionar
+                                        Despesa</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Teste-->
+
+                    <div class="row m-t-25">
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--c2">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-assignment"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2 id="numeroDeDespesas">0</h2>
+                                            <span>Despesas Cadastradas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--c4">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-money"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2 id="totalhome">R$ 0</h2>
+                                            <span>Total em Despesas</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Fim teste-->
+
+                    <div class="col-lg-12 mt-1">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Sistema de gerenciamento de despesas</h4>
+                            </div>
+
+
+                            <div class="card-body">
+                                <div class="default-tab">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab"
+                                                href="#nav-home" role="tab" aria-controls="nav-home"
+                                                aria-selected="true">Início</a>
+                                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                                href="#nav-profile" role="tab" aria-controls="nav-profile"
+                                                aria-selected="false">Como Usar</a>
+                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
+                                                href="#nav-contact" role="tab" aria-controls="nav-contact"
+                                                aria-selected="false">Agradecimentos</a>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                        <div class="tab-pane fade active show" id="nav-home" role="tabpanel"
+                                            aria-labelledby="nav-home-tab">
+                                            <p> O sistema foi desenvolvido para ser facil de usar e tornar sua
+                                                experiência cada
+                                                vez mais natural. Com poucos cliques você consegue fazer um controle
+                                                das suas despesas e manter o controle do seu dinheiro!.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                            aria-labelledby="nav-profile-tab">
+                                            <p>Basta clicar em <a href="cadastrar.html">
+                                                    <i class="zmdi zmdi-assignment-o"></i>Cadastrar Despesas</a> e
+                                                preencher o formulario, em seguida adicionar a despesa.<br>
+                                                Para ver as despesas ja cadastradas basta clicar em <a
+                                                    href="consultar.html">
+                                                    <i class="zmdi zmdi-search-in-page"></i>Consultar Despesas</a>.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                            aria-labelledby="nav-contact-tab">
+                                            <p>Agradeço aos professores Jorge Sant Ana, Jamilton que, através do seu
+                                                metodo de ensino e seu
+                                                conhecimento, me
+                                                ajudaram a concluir esse projeto, sendo o primeiro de muitos que viram
+                                                rumo ao meu sucesso.
+                                                Tambem devo gratidão aos meus amigos Luan e Yan vocês são muito
+                                                importantes para mim e servem de exemplo e motivação pessoal.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-n8">
+                <div class="copyright">
+                    <p>Copyright © 2020 João Paulo Santana. All rights reserved. Template by <a
+                            href="https://colorlib.com">Colorlib</a>. <br /> Visite: <a
+                            href="https://agenciasantana.com.br">Agência Santana</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-none">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaDespesas">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+    </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
+<!-- d document-->
